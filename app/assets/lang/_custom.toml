@@ -1,0 +1,23 @@
+# Custom Language File for Launcher Customizer
+
+[ejs.app]
+title = "SmileHappy Launcher"
+
+[ejs.landing]
+mediaGitHubURL = "https://github.com/dscalzi/HeliosLauncher"
+mediaXURL = "#"
+mediaInstagramURL = "#"
+mediaYouTubeURL = "#"
+mediaDiscordURL = "https://discord.gg/M2vsZTFFBw"
+
+[ejs.settings]
+sourceGithubLink = "https://github.com/dscalZi/HeliosLauncher"
+supportLink = "https://github.com/dscalZi/HeliosLauncher/issues"
+
+[ejs.welcome]
+welcomeHeader = "Welcome to Server SmileHappy"
+welcomeDescription = "Thế giới mà chúng tôi tạo ra giờ đây thuộc về bạn để khám phá.
+Hãy lên đường từ Dorne đến Castle Black, và nếu bạn đủ dũng cảm — vượt qua cả Bức Tường.
+Nhưng đừng chần chừ quá lâu, vì như lời cảnh báo nghiêm khắc của Nhà Stark:
+Mùa Đông đang đến."
+welcomeDescCTA = "Chỉ còn vài cú nhấp chuột nữa, bạn sẽ đặt chân đến SmileHappy World."

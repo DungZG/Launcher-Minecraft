@@ -1,0 +1,284 @@
+[ejs.landing]
+updateAvailableTooltip = "Có bản cập nhật mới"
+usernamePlaceholder = "Tên người dùng"
+usernameEditButton = "Chỉnh sửa"
+settingsTooltip = "Cài đặt"
+serverStatus = "MÁY CHỦ"
+serverStatusPlaceholder = "NGOẠI TUYẾN"
+mojangStatus = "TRẠNG THÁI MOJANG"
+mojangStatusTooltipTitle = "Dịch vụ"
+mojangStatusNETitle = "Không&nbsp;thiết&nbsp;yếu"
+newsButton = "TIN TỨC"
+launchButton = "CHƠI"
+launchButtonPlaceholder = "&#8226; Chưa chọn máy chủ"
+launchDetails = "Vui lòng chờ.."
+newsNavigationStatus = "{currentPage} / {totalPages}"
+newsErrorLoadSpan = "Đang kiểm tra tin tức.."
+newsErrorFailedSpan = "Không tải được tin tức"
+newsErrorRetryButton = "Thử lại"
+newsErrorNoneSpan = "Không có tin mới"
+
+[ejs.login]
+loginCancelText = "Hủy"
+loginSubheader = "ĐĂNG NHẬP MINECRAFT"
+loginEmailError = "* Giá trị không hợp lệ"
+loginEmailPlaceholder = "EMAIL HOẶC TÊN NGƯỜI DÙNG"
+loginPasswordError = "* Bắt buộc"
+loginPasswordPlaceholder = "MẬT KHẨU"
+loginForgotPasswordLink = "https://minecraft.net/password/forgot/"
+loginForgotPasswordText = "quên mật khẩu?"
+loginRememberMeText = "ghi nhớ đăng nhập?"
+loginButtonText = "ĐĂNG NHẬP"
+loginNeedAccountLink = "https://minecraft.net/store/minecraft-java-edition/"
+loginNeedAccountText = "Chưa có tài khoản?"
+loginPasswordDisclaimer1 = "Mật khẩu của bạn được gửi trực tiếp đến Mojang và không bao giờ được lưu trữ."
+loginPasswordDisclaimer2 = "{appName} không liên kết với Mojang AB."
+
+[ejs.loginOptions]
+loginOptionsTitle = "Tùy chọn đăng nhập"
+loginWithMicrosoft = "Đăng nhập với Microsoft"
+loginWithMojang = "Đăng nhập với Mojang"
+cancelButton = "Hủy"
+
+[ejs.overlay]
+serverSelectHeader = "Máy chủ khả dụng"
+serverSelectConfirm = "Chọn"
+serverSelectCancel = "Hủy"
+accountSelectHeader = "Chọn tài khoản"
+accountSelectConfirm = "Chọn"
+accountSelectCancel = "Hủy"
+
+[ejs.settings]
+navHeaderText = "Cài đặt"
+navAccount = "Tài khoản"
+navMinecraft = "Minecraft"
+navMods = "Mods"
+navJava = "Java"
+navLauncher = "Launcher"
+navAbout = "Giới thiệu"
+navUpdates = "Cập nhật"
+navDone = "Hoàn tất"
+tabAccountHeaderText = "Cài đặt tài khoản"
+tabAccountHeaderDesc = "Thêm hoặc quản lý tài khoản hiện có."
+microsoftAccount = "Microsoft"
+addMicrosoftAccount = "+ Thêm tài khoản Microsoft"
+mojangAccount = "Mojang"
+addMojangAccount = "+ Thêm tài khoản Mojang"
+minecraftTabHeaderText = "Cài đặt Minecraft"
+minecraftTabHeaderDesc = "Tùy chọn liên quan đến khởi chạy trò chơi."
+gameResolutionTitle = "Độ phân giải trò chơi"
+launchFullscreenTitle = "Khởi chạy ở chế độ toàn màn hình."
+autoConnectTitle = "Tự động kết nối máy chủ khi khởi chạy."
+launchDetachedTitle = "Tách tiến trình trò chơi khỏi launcher."
+launchDetachedDesc = "Nếu không tách, đóng launcher sẽ tắt cả trò chơi."
+tabModsHeaderText = "Cài đặt Mods"
+tabModsHeaderDesc = "Bật hoặc tắt các mod."
+switchServerButton = "Chuyển"
+requiredMods = "Mods bắt buộc"
+optionalMods = "Mods tùy chọn"
+dropinMods = "Mods thả vào"
+addMods = "Thêm Mods"
+dropinRefreshNote = "(Nhấn F5 để làm mới)"
+shaderpacks = "Gói Shader"
+shaderpackDesc = "Bật hoặc tắt shader. Shader chỉ chạy mượt trên máy mạnh. Bạn có thể thêm gói tùy chỉnh tại đây."
+selectShaderpack = "Chọn Shaderpack"
+tabJavaHeaderText = "Cài đặt Java"
+tabJavaHeaderDesc = "Quản lý cấu hình Java (nâng cao)."
+memoryTitle = "Bộ nhớ"
+maxRAM = "RAM tối đa"
+minRAM = "RAM tối thiểu"
+memoryDesc = "RAM tối thiểu khuyến nghị là 3GB. Đặt giá trị min và max bằng nhau có thể giảm lag."
+memoryTotalTitle = "Tổng"
+memoryAvailableTitle = "Khả dụng"
+javaExecutableTitle = "Tệp chạy Java"
+javaExecSelDialogTitle = "Chọn tệp Java"
+javaExecSelButtonText = "Chọn tệp"
+javaExecDesc = "Tệp Java được kiểm tra trước khi khởi chạy trò chơi."
+javaPathDesc = "Đường dẫn nên kết thúc bằng <strong>{pathSuffix}</strong>."
+jvmOptsTitle = "Tùy chọn JVM bổ sung"
+jvmOptsDesc = "Các tùy chọn truyền cho JVM khi chạy. Không cần thêm -Xms hoặc -Xmx."
+launcherTabHeaderText = "Cài đặt Launcher"
+launcherTabHeaderDesc = "Tùy chọn liên quan đến bản thân launcher."
+allowPrereleaseTitle = "Cho phép cập nhật thử nghiệm."
+allowPrereleaseDesc = "Bản thử nghiệm có thể chứa tính năng mới chưa ổn định.<br>Tùy chọn này luôn bật nếu bạn đang dùng bản thử nghiệm."
+dataDirectoryTitle = "Thư mục dữ liệu"
+selectDataDirectory = "Chọn thư mục dữ liệu"
+chooseFolder = "Chọn thư mục"
+dataDirectoryDesc = "Tất cả tệp trò chơi và Java cục bộ được lưu tại đây.<br>Ảnh chụp và bản lưu nằm trong thư mục instance tương ứng."
+aboutTabHeaderText = "Giới thiệu"
+aboutTabHeaderDesc = "Xem thông tin và ghi chú phiên bản hiện tại."
+aboutTitle = "{appName}"
+stableRelease = "Bản ổn định"
+versionText = "Phiên bản "
+sourceGithub = "Mã nguồn (GitHub)"
+support = "Hỗ trợ"
+devToolsConsole = "Bảng điều khiển DevTools"
+releaseNotes = "Ghi chú phát hành"
+changelog = "Nhật ký thay đổi"
+noReleaseNotes = "Không có ghi chú phát hành"
+viewReleaseNotes = "Xem trên GitHub"
+launcherUpdatesHeaderText = "Cập nhật Launcher"
+launcherUpdatesHeaderDesc = "Tải xuống, cài đặt và xem thông tin cập nhật."
+checkForUpdates = "Kiểm tra cập nhật"
+whatsNew = "Có gì mới"
+updateReleaseNotes = "Ghi chú cập nhật"
+
+[ejs.waiting]
+waitingText = "Đang chờ Microsoft.."
+
+[ejs.welcome]
+continueButton = "TIẾP TỤC"
+
+[js.discord]
+waiting = "Đang chờ client.."
+state = "Máy chủ: {shortId}"
+
+[js.index]
+microsoftLoginTitle = "Đăng nhập Microsoft"
+microsoftLogoutTitle = "Đăng xuất Microsoft"
+
+[js.login]
+login = "ĐĂNG NHẬP"
+loggingIn = "ĐANG ĐĂNG NHẬP"
+success = "THÀNH CÔNG"
+tryAgain = "Thử lại"
+
+[js.login.error]
+invalidValue = "* Giá trị không hợp lệ"
+requiredValue = "* Bắt buộc"
+
+[js.login.error.unknown]
+title = "Lỗi không xác định khi đăng nhập"
+desc = "Đã xảy ra lỗi không xác định. Vui lòng xem chi tiết trong bảng điều khiển."
+
+[js.landing.launch]
+pleaseWait = "Vui lòng chờ.."
+failureTitle = "Lỗi khi khởi chạy"
+failureText = "Xem chi tiết trong console (CTRL + Shift + i)."
+okay = "OK"
+
+[js.landing.selectedAccount]
+noAccountSelected = "Chưa chọn tài khoản"
+
+[js.landing.selectedServer]
+noSelection = "Chưa chọn máy chủ"
+loading = "Đang tải.."
+
+[js.landing.serverStatus]
+server = "MÁY CHỦ"
+offline = "NGOẠI TUYẾN"
+players = "NGƯỜI CHƠI"
+
+[js.landing.systemScan]
+checking = "Đang kiểm tra hệ thống.."
+noCompatibleJava = "Không tìm thấy<br>phiên bản Java tương thích"
+installJavaMessage = "Để khởi chạy Minecraft, bạn cần cài Java 64-bit {major}. Bạn có muốn cài đặt ngay không?"
+installJava = "Cài đặt Java"
+installJavaManually = "Tự cài đặt"
+javaDownloadPrepare = "Chuẩn bị tải Java.."
+javaDownloadFailureTitle = "Lỗi khi tải Java"
+javaDownloadFailureText = "Xem console (CTRL + Shift + i) để biết thêm chi tiết."
+javaRequired = "Cần Java<br>để khởi chạy"
+javaRequiredMessage = 'Cần Java {major} x64 hợp lệ để khởi chạy.<br><br>Xem hướng dẫn cài đặt tại <a href="https://github.com/dscalzi/HeliosLauncher/wiki/Java-Management#manually-installing-a-valid-version-of-java">Java Management Guide</a>.'
+javaRequiredDismiss = "Tôi hiểu"
+javaRequiredCancel = "Quay lại"
+
+[js.landing.downloadJava]
+findJdkFailure = "Không tìm thấy bản phân phối OpenJDK."
+javaDownloadCorruptedError = "Tệp JDK tải về bị lỗi."
+extractingJava = "Đang giải nén Java"
+javaInstalled = "Đã cài đặt Java!"
+
+[js.landing.dlAsync]
+loadingServerInfo = "Đang tải thông tin máy chủ.."
+fatalError = "Lỗi nghiêm trọng"
+unableToLoadDistributionIndex = "Không thể tải danh mục phân phối. Xem console (CTRL + Shift + i) để biết chi tiết."
+pleaseWait = "Vui lòng chờ.."
+errorDuringLaunchTitle = "Lỗi khi khởi chạy"
+seeConsoleForDetails = "Xem chi tiết trong console (CTRL + Shift + i)."
+validatingFileIntegrity = "Đang kiểm tra tính toàn vẹn tệp.."
+errorDuringFileVerificationTitle = "Lỗi xác minh tệp"
+downloadingFiles = "Đang tải tệp.."
+errorDuringFileDownloadTitle = "Lỗi khi tải tệp"
+preparingToLaunch = "Chuẩn bị khởi chạy.."
+launchingGame = "Đang khởi chạy trò chơi.."
+launchWrapperNotDownloaded = "Tệp chính LaunchWrapper tải không thành công. Vui lòng tắt tạm phần mềm diệt virus và thử lại.<br><br>Nếu có thể, hãy <a href=\"https://github.com/dscalzi/HeliosLauncher/issues\">báo lỗi</a> giúp chúng tôi."
+doneEnjoyServer = "Hoàn tất. Chúc bạn chơi vui!"
+checkConsoleForDetails = "Vui lòng kiểm tra console (CTRL + Shift + i)."
+
+[js.landing.news]
+checking = "Đang kiểm tra tin tức"
+
+[js.landing.discord]
+loading = "Đang tải trò chơi.."
+joining = "Đang ra khơi đến Westeros!"
+joined = "Đang khám phá thế giới!"
+
+[js.overlay]
+dismiss = "Đóng"
+
+[js.settings.fileSelectors]
+executables = "Tệp thực thi"
+allFiles = "Tất cả tệp"
+
+[js.settings.mstfLogin]
+errorTitle = "Đã xảy ra lỗi"
+errorMessage = "Xác thực Microsoft thất bại. Vui lòng thử lại."
+okButton = "OK"
+
+[js.settings.mstfLogout]
+errorTitle = "Đã xảy ra lỗi"
+errorMessage = "Đăng xuất Microsoft thất bại. Vui lòng thử lại."
+okButton = "OK"
+
+[js.settings.authAccountSelect]
+selectButton = "Chọn tài khoản"
+selectedButton = "Đã chọn &#10004;"
+
+[js.settings.authAccountLogout]
+lastAccountWarningTitle = "Cảnh báo<br>Đây là tài khoản cuối cùng"
+lastAccountWarningMessage = "Bạn phải đăng nhập ít nhất một tài khoản để dùng launcher.<br><br>Bạn có chắc muốn đăng xuất không?"
+confirmButton = "Chắc chắn"
+cancelButton = "Hủy"
+
+[js.settings.authAccountPopulate]
+username = "Tên người dùng"
+uuid = "UUID"
+selectAccount = "Chọn tài khoản"
+selectedAccount = "Đã chọn ✓"
+logout = "Đăng xuất"
+
+[js.settings.dropinMods]
+removeButton = "Xóa"
+deleteFailedTitle = "Không thể xóa<br>Mod {fullName}"
+deleteFailedMessage = "Hãy đảm bảo tệp không đang được sử dụng."
+failedToggleTitle = "Không thể bật/tắt<br>một hoặc nhiều mod"
+okButton = "OK"
+
+[js.settings.serverListing]
+mainServer = "Máy chủ chính"
+
+[js.settings.java]
+selectedJava = "Đã chọn: Java {version} ({vendor})"
+invalidSelection = "Lựa chọn không hợp lệ"
+requiresJava = "Yêu cầu Java {major} x64."
+availableOptions = "Tùy chọn khả dụng cho Java {major} (HotSpot VM)"
+
+[js.settings.about]
+preReleaseTitle = "Bản thử nghiệm"
+stableReleaseTitle = "Bản ổn định"
+releaseNotesFailed = "Không tải được ghi chú phát hành."
+
+[js.settings.updates]
+newReleaseTitle = "Có bản cập nhật mới"
+newPreReleaseTitle = "Có bản thử nghiệm mới"
+downloadingButton = "Đang tải.."
+downloadButton = 'Tải từ GitHub<span style="font-size:10px;color:gray;text-shadow:none!important;">Đóng launcher và chạy file cài đặt để cập nhật.</span>'
+latestVersionTitle = "Bạn đang dùng bản mới nhất"
+checkForUpdatesButton = "Kiểm tra cập nhật"
+checkingForUpdatesButton = "Đang kiểm tra cập nhật.."
+
+[js.uibinder.startup]
+fatalErrorTitle = "Lỗi nghiêm trọng: Không thể tải danh mục phân phối"
+fatalErrorMessage = "Không thể kết nối tới máy chủ để tải dữ liệu. Không có bản sao cục bộ. <br><br>Launcher không thể khởi động nếu thiếu tệp này. Hãy kiểm tra kết nối Internet và thử lại."
+closeButton = "Đóng"
