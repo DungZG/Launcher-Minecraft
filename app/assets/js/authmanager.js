@@ -139,33 +139,33 @@ function mojangErrorDisplayable(errorCode) {
  * @param {string} password The account password.
  * @returns {Promise.<Object>} Promise which resolves the resolved authenticated account object.
  */
-exports.addMojangAccount = async function(username, password) {
-    try {
-        const response = await MojangRestAPI.authenticate(username, password, ConfigManager.getClientToken())
-        console.log(response)
-        if(response.responseStatus === RestResponseStatus.SUCCESS) {
+// exports.addMojangAccount = async function(username, password) {
+//     try {
+//         const response = await MojangRestAPI.authenticate(username, password, ConfigManager.getClientToken())
+//         console.log(response)
+//         if(response.responseStatus === RestResponseStatus.SUCCESS) {
 
-            const session = response.data
-            if(session.selectedProfile != null){
-                const ret = ConfigManager.addMojangAuthAccount(session.selectedProfile.id, session.accessToken, username, session.selectedProfile.name)
-                if(ConfigManager.getClientToken() == null){
-                    ConfigManager.setClientToken(session.clientToken)
-                }
-                ConfigManager.save()
-                return ret
-            } else {
-                return Promise.reject(mojangErrorDisplayable(MojangErrorCode.ERROR_NOT_PAID))
-            }
+//             const session = response.data
+//             if(session.selectedProfile != null){
+//                 const ret = ConfigManager.addMojangAuthAccount(session.selectedProfile.id, session.accessToken, username, session.selectedProfile.name)
+//                 if(ConfigManager.getClientToken() == null){
+//                     ConfigManager.setClientToken(session.clientToken)
+//                 }
+//                 ConfigManager.save()
+//                 return ret
+//             } else {
+//                 return Promise.reject(mojangErrorDisplayable(MojangErrorCode.ERROR_NOT_PAID))
+//             }
 
-        } else {
-            return Promise.reject(mojangErrorDisplayable(response.mojangErrorCode))
-        }
+//         } else {
+//             return Promise.reject(mojangErrorDisplayable(response.mojangErrorCode))
+//         }
         
-    } catch (err){
-        log.error(err)
-        return Promise.reject(mojangErrorDisplayable(MojangErrorCode.UNKNOWN))
-    }
-}
+//     } catch (err){
+//         log.error(err)
+//         return Promise.reject(mojangErrorDisplayable(MojangErrorCode.UNKNOWN))
+//     }
+// }
 
 const AUTH_MODE = { FULL: 0, MS_REFRESH: 1, MC_REFRESH: 2 }
 
@@ -273,23 +273,23 @@ exports.addMicrosoftAccount = async function(authCode) {
  * @param {string} uuid The UUID of the account to be removed.
  * @returns {Promise.<void>} Promise which resolves to void when the action is complete.
  */
-exports.removeMojangAccount = async function(uuid){
-    try {
-        const authAcc = ConfigManager.getAuthAccount(uuid)
-        const response = await MojangRestAPI.invalidate(authAcc.accessToken, ConfigManager.getClientToken())
-        if(response.responseStatus === RestResponseStatus.SUCCESS) {
-            ConfigManager.removeAuthAccount(uuid)
-            ConfigManager.save()
-            return Promise.resolve()
-        } else {
-            log.error('Error while removing account', response.error)
-            return Promise.reject(response.error)
-        }
-    } catch (err){
-        log.error('Error while removing account', err)
-        return Promise.reject(err)
-    }
-}
+// exports.removeMojangAccount = async function(uuid){
+//     try {
+//         const authAcc = ConfigManager.getAuthAccount(uuid)
+//         const response = await MojangRestAPI.invalidate(authAcc.accessToken, ConfigManager.getClientToken())
+//         if(response.responseStatus === RestResponseStatus.SUCCESS) {
+//             ConfigManager.removeAuthAccount(uuid)
+//             ConfigManager.save()
+//             return Promise.resolve()
+//         } else {
+//             log.error('Error while removing account', response.error)
+//             return Promise.reject(response.error)
+//         }
+//     } catch (err){
+//         log.error('Error while removing account', err)
+//         return Promise.reject(err)
+//     }
+// }
 
 /**
  * Remove a Microsoft account. It is expected that the caller will invoke the OAuth logout
@@ -422,4 +422,27 @@ exports.validateSelected = async function(){
         return await validateSelectedMojangAccount()
     }
     
+}
+
+async function refreshWebToken(refreshToken) {
+    const apiUrl = ConfigManager.getBackendApi() + '/refresh'
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ refreshToken })
+        })
+        const data = await response.json()
+        if (data.success) {
+            return {
+                accessToken: data.data.accessToken,
+                refreshToken: data.data.refreshToken
+            }
+        } else {
+            throw new Error('Invalid refresh token')
+        }
+    } catch (err) {
+        console.error('Failed to refresh token:', err)
+        return null
+    }
 }

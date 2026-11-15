@@ -180,55 +180,94 @@ loginCancelButton.onclick = (e) => {
 loginForm.onsubmit = () => { return false }
 
 // Bind login button behavior.
-loginButton.addEventListener('click', () => {
-    // Disable form.
-    formDisabled(true)
+// loginButton.addEventListener('click', () => {
+//     // Disable form.
+//     formDisabled(true)
 
-    // Show loading stuff.
-    loginLoading(true)
+//     // Show loading stuff.
+//     loginLoading(true)
 
-    AuthManager.addMojangAccount(loginUsername.value, loginPassword.value).then((value) => {
-        updateSelectedAccount(value)
-        loginButton.innerHTML = loginButton.innerHTML.replace(Lang.queryJS('login.loggingIn'), Lang.queryJS('login.success'))
-        $('.circle-loader').toggleClass('load-complete')
-        $('.checkmark').toggle()
-        setTimeout(() => {
-            switchView(VIEWS.login, loginViewOnSuccess, 500, 500, async () => {
-                // Temporary workaround
-                if(loginViewOnSuccess === VIEWS.settings){
-                    await prepareSettings()
-                }
-                loginViewOnSuccess = VIEWS.landing // Reset this for good measure.
-                loginCancelEnabled(false) // Reset this for good measure.
-                loginViewCancelHandler = null // Reset this for good measure.
-                loginUsername.value = ''
-                loginPassword.value = ''
-                $('.circle-loader').toggleClass('load-complete')
-                $('.checkmark').toggle()
-                loginLoading(false)
-                loginButton.innerHTML = loginButton.innerHTML.replace(Lang.queryJS('login.success'), Lang.queryJS('login.login'))
-                formDisabled(false)
-            })
-        }, 1000)
-    }).catch((displayableError) => {
-        loginLoading(false)
+//     AuthManager.addMojangAccount(loginUsername.value, loginPassword.value).then((value) => {
+//         updateSelectedAccount(value)
+//         loginButton.innerHTML = loginButton.innerHTML.replace(Lang.queryJS('login.loggingIn'), Lang.queryJS('login.success'))
+//         $('.circle-loader').toggleClass('load-complete')
+//         $('.checkmark').toggle()
+//         setTimeout(() => {
+//             switchView(VIEWS.login, loginViewOnSuccess, 500, 500, async () => {
+//                 // Temporary workaround
+//                 if(loginViewOnSuccess === VIEWS.settings){
+//                     await prepareSettings()
+//                 }
+//                 loginViewOnSuccess = VIEWS.landing // Reset this for good measure.
+//                 loginCancelEnabled(false) // Reset this for good measure.
+//                 loginViewCancelHandler = null // Reset this for good measure.
+//                 loginUsername.value = ''
+//                 loginPassword.value = ''
+//                 $('.circle-loader').toggleClass('load-complete')
+//                 $('.checkmark').toggle()
+//                 loginLoading(false)
+//                 loginButton.innerHTML = loginButton.innerHTML.replace(Lang.queryJS('login.success'), Lang.queryJS('login.login'))
+//                 formDisabled(false)
+//             })
+//         }, 1000)
+//     }).catch((displayableError) => {
+//         loginLoading(false)
 
-        let actualDisplayableError
-        if(isDisplayableError(displayableError)) {
-            msftLoginLogger.error('Error while logging in.', displayableError)
-            actualDisplayableError = displayableError
-        } else {
-            // Uh oh.
-            msftLoginLogger.error('Unhandled error during login.', displayableError)
-            actualDisplayableError = Lang.queryJS('login.error.unknown')
+//         let actualDisplayableError
+//         if(isDisplayableError(displayableError)) {
+//             msftLoginLogger.error('Error while logging in.', displayableError)
+//             actualDisplayableError = displayableError
+//         } else {
+//             // Uh oh.
+//             msftLoginLogger.error('Unhandled error during login.', displayableError)
+//             actualDisplayableError = Lang.queryJS('login.error.unknown')
+//         }
+
+//         setOverlayContent(actualDisplayableError.title, actualDisplayableError.desc, Lang.queryJS('login.tryAgain'))
+//         setOverlayHandler(() => {
+//             formDisabled(false)
+//             toggleOverlay(false)
+//         })
+//         toggleOverlay(true)
+//     })
+
+// })
+
+async function WebAccountLogin(email, password) {
+    const apiUrl = ConfigManager.getBackendApi() + '/login'
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        })
+
+        if (!response.ok) {
+            throw new Error(`Server returned ${response.status}`)
         }
 
-        setOverlayContent(actualDisplayableError.title, actualDisplayableError.desc, Lang.queryJS('login.tryAgain'))
-        setOverlayHandler(() => {
-            formDisabled(false)
-            toggleOverlay(false)
-        })
-        toggleOverlay(true)
-    })
-
-})
+        const data = await response.json()
+        if (data.success) {
+            // Lưu token vào config launcher
+            const account = {
+                uuid: data.data.userId,
+                accessToken: data.data.accessToken,
+                refreshToken: data.data.refreshToken,
+                displayName: data.data.displayName,
+                type: 'web'
+            }
+            ConfigManager.addAuthAccount(account)
+            ConfigManager.save()
+            updateSelectedAccount(account)
+            return true
+        } else {
+            throw new Error(data.error || 'Login failed')
+        }
+    } catch (err) {
+        console.error('[WebLogin] Failed:', err)
+        alert('Đăng nhập thất bại: ' + err.message)
+        return false
+    }
+}

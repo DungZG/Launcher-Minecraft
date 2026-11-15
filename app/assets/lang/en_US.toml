@@ -179,7 +179,7 @@ javaDownloadPrepare = "Chuẩn bị tải Java.."
 javaDownloadFailureTitle = "Lỗi khi tải Java"
 javaDownloadFailureText = "Xem console (CTRL + Shift + i) để biết thêm chi tiết."
 javaRequired = "Cần Java<br>để khởi chạy"
-javaRequiredMessage = 'Cần Java {major} x64 hợp lệ để khởi chạy.<br><br>Xem hướng dẫn cài đặt tại <a href="https://github.com/dscalzi/HeliosLauncher/wiki/Java-Management#manually-installing-a-valid-version-of-java">Java Management Guide</a>.'
+javaRequiredMessage = 'Cần Java {major} x64 hợp lệ để khởi chạy.<br><br>Xem hướng dẫn cài đặt tại Java Management Guide</a>.'
 javaRequiredDismiss = "Tôi hiểu"
 javaRequiredCancel = "Quay lại"
 

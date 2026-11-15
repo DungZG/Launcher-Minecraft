@@ -46,10 +46,10 @@ body, button {
     color: white;
 }
 
-/*body {
+body {
     background: url('./../images/backgrounds/0.jpg') no-repeat center center fixed;
     background-size: cover;
-}*/
+}
 
 /*******************************************************************************
  *                                                                             *
@@ -64,7 +64,7 @@ body, button {
     display: flex;
     flex-direction: column;
     transition: background-color 1s ease;
-    /*background-color: rgba(0, 0, 0, 0.5);*/
+    background-color: rgba(0, 0, 0, 0.5);
     -webkit-user-select: none;
 }
 
@@ -860,7 +860,7 @@ body, button {
     transform: rotate(45deg);
 }
 
-/*
+
 #login_filter {
     height: calc(100% - 22px);
     width: 100%;
@@ -871,7 +871,7 @@ body, button {
     transform: scale(1.2);
     background-size: cover;
 }
-*/
+
 
 /*******************************************************************************
  *                                                                             *
@@ -2855,6 +2855,7 @@ input:checked + .toggleSwitchSlider:before {
 
 /* Logo image. */
 #image_seal {
+    display: none;
     height: 70px;
     width: auto;
     position: relative;
@@ -3966,3 +3967,18 @@ input:checked + .toggleSwitchSlider:before {
 .rotating {
     animation: rotating 10s linear infinite;
 }
+
+.loginField {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 6px;
+    border: none;
+    background: #2e2e2e;
+    color: #fff;
+    font-size: 14px;
+}
+.loginField:focus {
+    outline: 1px solid #00aaff;
+}
+

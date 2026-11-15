@@ -7,8 +7,8 @@ const logger = LoggerUtil.getLogger('ConfigManager')
 
 const sysRoot = process.env.APPDATA || (process.platform == 'darwin' ? process.env.HOME + '/Library/Application Support' : process.env.HOME)
 
-const dataPath = path.join(sysRoot, '.helioslauncher')
-
+const dataPath = path.join(sysRoot, '.smilehappy')
+const BACKEND_API = 'http://13.212.254.137/api/Auth'
 const launcherDir = require('@electron/remote').app.getPath('userData')
 
 /**
@@ -20,6 +20,7 @@ exports.getLauncherDirectory = function(){
     return launcherDir
 }
 
+exports.getBackendApi = () => BACKEND_API
 /**
  * Get the launcher's data directory. This is where all files related
  * to game launch are installed (common, instances, java, etc).
@@ -63,9 +64,7 @@ function resolveSelectedRAM(ram) {
     if(ram?.recommended != null) {
         return `${ram.recommended}M`
     } else {
-        // Legacy behavior
-        const mem = os.totalmem()
-        return mem >= (8*1073741824) ? '4G' : (mem >= (6*1073741824) ? '3G' : '2G')
+       return '6G'
     }
 }
 
@@ -130,6 +129,7 @@ exports.load = function(){
         } else {
             doLoad = false
             config = DEFAULT_CONFIG
+            config.settings.launcher.dataDirectory = dataPath
             exports.save()
         }
     }
@@ -144,10 +144,12 @@ exports.load = function(){
             logger.info('Generating a new configuration file.')
             fs.ensureDirSync(path.join(configPath, '..'))
             config = DEFAULT_CONFIG
+            config.settings.launcher.dataDirectory = dataPath
             exports.save()
         }
         if(doValidate){
             config = validateKeySet(DEFAULT_CONFIG, config)
+            config.settings.launcher.dataDirectory = dataPath
             exports.save()
         }
     }
@@ -790,4 +792,51 @@ exports.getAllowPrerelease = function(def = false){
  */
 exports.setAllowPrerelease = function(allowPrerelease){
     config.settings.launcher.allowPrerelease = allowPrerelease
+}
+/**
+ * Adds a custom web account (JWT) to the authentication database.
+ * 
+ * @param {string} uuid The unique ID of the account (usually from backend userId).
+ * @param {Object} account The account object returned from the backend (includes tokens and displayName).
+ * 
+ * @returns {Object} The authenticated account object created by this action.
+ */
+exports.addAuthAccount = function(uuid, account) {
+    config.selectedAccount = uuid
+    config.authenticationDatabase[uuid] = {
+        type: 'web',
+        accessToken: account.accessToken,
+        refreshToken: account.refreshToken,
+        uuid: uuid.trim(),
+        displayName: account.displayName.trim(),
+        username: account.displayName.trim(),
+        expiresAt: Date.now() + 1000 * 60 * 60 * 24 * 7 // 7 ngày giả định, có thể thay bằng giá trị từ server
+    }
+    return config.authenticationDatabase[uuid]
+}
+/**
+ * Get the current web (JWT) authenticated account.
+ * 
+ * @returns {Object|null} The selected web account, or null if not logged in.
+ */
+exports.getWebAuth = function() {
+    const selected = config.selectedAccount
+    if (!selected) return null
+
+    const acc = config.authenticationDatabase[selected]
+    if (acc && acc.type === 'web') {
+        return acc
+    }
+    return null
+}
+
+/**
+ * Update (replace) the web authentication info in config.
+ * @param {Object} webAccount The web account object with uuid, tokens, and displayName.
+ */
+exports.setWebAuth = function(webAccount) {
+    if (!webAccount?.uuid) return
+    config.authenticationDatabase[webAccount.uuid] = webAccount
+    config.selectedAccount = webAccount.uuid
+    exports.save()
 }

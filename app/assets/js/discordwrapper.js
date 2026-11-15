@@ -43,10 +43,28 @@ exports.updateDetails = function(details){
     client.setActivity(activity)
 }
 
-exports.shutdownRPC = function(){
-    if(!client) return
-    client.clearActivity()
-    client.destroy()
-    client = null
-    activity = null
+exports.shutdownRPC = function () {
+    if (!client) {
+        console.warn('[DiscordRPC] Client is null, skipping shutdown.')
+        return
+    }
+
+    try {
+        if (client.transport && client.transport.socket && client.transport.socket.writable) {
+            Promise.allSettled([
+                client.clearActivity(),
+                client.destroy()
+            ]).then(() => {
+                console.log('[DiscordRPC] RPC shut down successfully.')
+            }).catch(err => {
+                console.warn('[DiscordRPC] Partial shutdown error:', err.message)
+            })
+        } else {
+            console.warn('[DiscordRPC] No active socket or Discord not running.')
+        }
+    } catch (err) {
+        console.error('[DiscordRPC] Error shutting down RPC:', err)
+    } finally {
+        client = null
+    }
 }

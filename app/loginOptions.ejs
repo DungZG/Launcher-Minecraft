@@ -5,16 +5,18 @@
             <div class="loginOptionActions">
                 <div class="loginOptionButtonContainer">
                     <button id="loginOptionMicrosoft" class="loginOptionButton">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 23 23">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22"
+                            height="22" viewBox="0 0 23 23">
                             <path fill="#f35325" d="M1 1h10v10H1z" />
                             <path fill="#81bc06" d="M12 1h10v10H12z" />
                             <path fill="#05a6f0" d="M1 12h10v10H1z" />
                             <path fill="#ffba08" d="M12 12h10v10H12z" />
                         </svg>
-                        <span><%- lang('loginOptions.loginWithMicrosoft') %></span>
+                        <span><%- lang('loginOptions.loginWithMicrosoft')
+                            %></span>
                     </button>
                 </div>
-                <div class="loginOptionButtonContainer">
+                <!-- <div class="loginOptionButtonContainer">
                     <button id="loginOptionMojang" class="loginOptionButton">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 9.677 9.667">
                             <path d="M-26.332-12.098h2.715c-1.357.18-2.574 1.23-2.715 2.633z" fill="#fff" />
@@ -23,10 +25,75 @@
                         </svg>
                         <span><%- lang('loginOptions.loginWithMojang') %></span>
                     </button>
+                </div> -->
+
+                <div class="loginOptionButtonContainer">
+                    <button id="loginOptionWeb" class="loginOptionButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22"
+                            height="22" viewBox="0 0 24 24">
+                            <path fill="#2196F3"
+                                d="M12 0C5.371 0 0 5.371 0 12s5.371 12 12 12 12-5.371 12-12S18.629 0 12 0zm0 2c5.523 0 10 4.477 10 10a9.93 9.93 0 0 1-1.49 5.243L13 12V4.05C13.646 4.018 13.32 4 12 4 6.477 4 2 8.477 2 14a9.928 9.928 0 0 0 1.553 5.372A9.969 9.969 0 0 1 12 2z" />
+                        </svg>
+                        <span>Đăng nhập tài khoản web</span>
+                    </button>
+                </div>
+
+            </div>
+            <!-- FORM đăng nhập web nằm NGOÀI loginOptionActions -->
+            <!-- FORM đăng nhập web -->
+            <div id="webLoginForm"
+                style="display: none; margin-top: 20px; width: 100%; max-width: 380px; background: rgba(0,0,0,0.55); backdrop-filter: blur(10px); border-radius: 16px; padding: 30px 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); margin-left: auto; margin-right: auto;">
+
+                <h2
+                    style="text-align:center; color:#fff; font-weight:600; margin-bottom: 25px;">Đăng
+                    nhập tài khoản</h2>
+
+                <input
+                    type="email"
+                    id="webLoginEmail"
+                    placeholder="Email"
+                    class="loginField"
+                    style="width:100%; margin-bottom:15px; padding:12px 15px; border:none; border-radius:10px; outline:none; background:rgba(255,255,255,0.12); color:#fff; font-size:15px;" />
+
+                <input
+                    type="password"
+                    id="webLoginPassword"
+                    placeholder="Mật khẩu"
+                    class="loginField"
+                    style="width:100%; margin-bottom:20px; padding:12px 15px; border:none; border-radius:10px; outline:none; background:rgba(255,255,255,0.12); color:#fff; font-size:15px;" />
+
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                    <button
+                        id="webLoginConfirm"
+                        class="loginOptionButton"
+                         style="width:100%; padding:10px; background:rgba(255,255,255,0.1); color:#fff; font-weight:500; border:none; border-radius:8px; cursor:pointer; transition:all 0.2s ease;"
+                        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
+                        onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+                        Đăng nhập
+                    </button>
+
+                    <button
+                        id="webLoginBack"
+                        class="loginOptionButton"
+                        style="width:100%; padding:10px; background:rgba(255,255,255,0.1); color:#fff; font-weight:500; border:none; border-radius:8px; cursor:pointer; transition:all 0.2s ease;"
+                        onmouseover="this.style.background='rgba(255,255,255,0.2)'"
+                        onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+                        Quay lại
+                    </button>
                 </div>
             </div>
+            <style>
+    .loginOptionButton {
+        font-family: 'Poppins', sans-serif;
+        transition: all 0.25s ease;
+    }
+    .loginOptionButton:hover {
+        transform: translateY(-2px);
+    }
+    </style>
             <div id="loginOptionCancelContainer" style="display: none;">
-                <button id="loginOptionCancelButton"><%- lang('loginOptions.cancelButton') %></button>
+                <button id="loginOptionCancelButton"><%-
+                    lang('loginOptions.cancelButton') %></button>
             </div>
         </div>
     </div>
